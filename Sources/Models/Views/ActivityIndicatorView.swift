@@ -46,6 +46,11 @@ public struct ActivityIndicatorView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let color: Color?
     public let style: String?
     
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
+    
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
     enum ExternalCodingKeys: CodingKey { case color }
@@ -100,7 +105,11 @@ public struct ActivityIndicatorView: IBDecodable, ViewProtocol, IBIdentifiable {
             isAnimating:                               container.attributeIfPresent(of: .isAnimating),
             hidesWhenStopped:                          container.attributeIfPresent(of: .hidesWhenStopped),
             color:                                     colorsContainer?.withAttributeElement(.key, CodingKeys.color.stringValue),
-            style:                                     container.attributeIfPresent(of: .style)
+            style:                                     container.attributeIfPresent(of: .style),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

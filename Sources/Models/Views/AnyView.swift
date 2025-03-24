@@ -37,6 +37,10 @@ public protocol ViewProtocol: IBKeyable, IBCustomClassable, IBUserLabelable, IBC
     var tintColor: Color? { get }
     var isHidden: Bool? { get }
     var alpha: Float? {get}
+    var horizontalCompressionResistancePriority: Int? { get }
+    var verticalCompressionResistancePriority: Int? { get }
+    var horizontalHuggingPriority: Int? { get }
+    var verticalHuggingPriority: Int? { get }
 }
 
 // MARK: - AnyView
@@ -157,6 +161,7 @@ public struct Constraint: IBDecodable, IBIdentifiable {
     public let firstAttribute: LayoutAttribute?
     public let secondItem: String?
     public let secondAttribute: LayoutAttribute?
+    public let identifier: String?
     public let relation: Relation
 
     public enum LayoutAttribute: XMLAttributeDecodable, KeyDecodable, Equatable {
@@ -233,6 +238,7 @@ public struct Constraint: IBDecodable, IBIdentifiable {
             firstAttribute:  container.attributeIfPresent(of: .firstAttribute),
             secondItem:      container.attributeIfPresent(of: .secondItem),
             secondAttribute: container.attributeIfPresent(of: .secondAttribute),
+            identifier:      container.attributeIfPresent(of: .identifier),
             relation:        container.attributeIfPresent(of: .relation) ?? .equal
         )
     }

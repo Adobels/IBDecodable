@@ -38,7 +38,6 @@ public struct MapView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let showsTraffic: Bool?
     public let scrollEnabled: Bool?
     public let appearanceType: String?
-    public let verticalHuggingPriority: Int?
     public let showsCompass: Bool?
     public let showsPointsOfInterest: Bool?
     public let restorationIdentifier: String?
@@ -48,11 +47,15 @@ public struct MapView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let pitchEnabled: Bool?
     public let rotateEnabled: Bool?
     public let zoomEnabled: Bool?
-    public let verticalCompressionResistancePriority: String?
     public let backgroundColor: Color?
     public let tintColor: Color?
     public let isHidden: Bool?
     public let alpha: Float?
+    
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -105,7 +108,6 @@ public struct MapView: IBDecodable, ViewProtocol, IBIdentifiable {
             showsTraffic:                              container.attributeIfPresent(of: .showsTraffic),
             scrollEnabled:                             container.attributeIfPresent(of: .scrollEnabled),
             appearanceType:                            container.attributeIfPresent(of: .appearanceType),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
             showsCompass:                              container.attributeIfPresent(of: .showsCompass),
             showsPointsOfInterest:                     container.attributeIfPresent(of: .showsPointsOfInterest),
             restorationIdentifier:                     container.attributeIfPresent(of: .restorationIdentifier),
@@ -115,11 +117,14 @@ public struct MapView: IBDecodable, ViewProtocol, IBIdentifiable {
             pitchEnabled:                              container.attributeIfPresent(of: .pitchEnabled),
             rotateEnabled:                             container.attributeIfPresent(of: .rotateEnabled),
             zoomEnabled:                               container.attributeIfPresent(of: .zoomEnabled),
-            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             backgroundColor:                           colorsContainer?.withAttributeElement(.key, CodingKeys.backgroundColor.stringValue),
             tintColor:                                 colorsContainer?.withAttributeElement(.key, CodingKeys.tintColor.stringValue),
             isHidden:                                  container.attributeIfPresent(of: .isHidden),
-            alpha:                                     container.attributeIfPresent(of: .alpha)
+            alpha:                                     container.attributeIfPresent(of: .alpha),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

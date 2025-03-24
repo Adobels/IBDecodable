@@ -52,6 +52,10 @@ public struct DatePicker: IBDecodable, ControlProtocol, IBIdentifiable {
     public let countDownDuration: Int?
     public let minimumDate: IBDate?
     public let maximumDate: IBDate?
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -121,7 +125,11 @@ public struct DatePicker: IBDecodable, ControlProtocol, IBIdentifiable {
             useCurrentDate:                            container.attributeIfPresent(of: .useCurrentDate),
             countDownDuration:                         container.attributeIfPresent(of: .countDownDuration),
             minimumDate:                               dateContainer?.withAttributeElement(.key, CodingKeys.minimumDate.stringValue),
-            maximumDate:                               dateContainer?.withAttributeElement(.key, CodingKeys.maximumDate.stringValue)
+            maximumDate:                               dateContainer?.withAttributeElement(.key, CodingKeys.maximumDate.stringValue),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

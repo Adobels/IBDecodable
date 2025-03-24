@@ -60,6 +60,11 @@ public struct CollectionView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let tintColor: Color?
     public let isHidden: Bool?
     public let alpha: Float?
+    
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -131,7 +136,11 @@ public struct CollectionView: IBDecodable, ViewProtocol, IBIdentifiable {
             backgroundColor:                           colorsContainer?.withAttributeElement(.key, CodingKeys.backgroundColor.stringValue),
             tintColor:                                 colorsContainer?.withAttributeElement(.key, CodingKeys.tintColor.stringValue),
             isHidden:                                  container.attributeIfPresent(of: .isHidden),
-            alpha:                                     container.attributeIfPresent(of: .alpha)
+            alpha:                                     container.attributeIfPresent(of: .alpha),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }
@@ -173,6 +182,11 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
     public let isHidden: Bool?
     public let alpha: Float?
     
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
+    
     public var children: [IBElement] {
         // do not let default implementation which lead to duplicate element contentView
         var children: [IBElement] = [contentView] + (rect.map { [$0] } ?? [])
@@ -210,7 +224,7 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
         public let colorLabel: String?
         public let isMisplaced: Bool?
         public let isAmbiguous: Bool?
-    public let verifyAmbiguity: VerifyAmbiguity?
+        public let verifyAmbiguity: VerifyAmbiguity?
         public let opaque: Bool?
         public let rect: Rect?
         public let subviews: [AnyView]?
@@ -224,6 +238,11 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
         public let tintColor: Color?
         public let isHidden: Bool?
         public let alpha: Float?
+        
+        public let horizontalCompressionResistancePriority: Int?
+        public let verticalCompressionResistancePriority: Int?
+        public let horizontalHuggingPriority: Int?
+        public let verticalHuggingPriority: Int?
         
         enum ConstraintsCodingKeys: CodingKey { case constraint }
         enum VariationCodingKey: CodingKey { case variation }
@@ -274,7 +293,11 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
                 backgroundColor:                           colorsContainer?.withAttributeElement(.key, CodingKeys.backgroundColor.stringValue),
                 tintColor:                                 colorsContainer?.withAttributeElement(.key, CodingKeys.tintColor.stringValue),
                 isHidden:                                  container.attributeIfPresent(of: .isHidden),
-                alpha:                                     container.attributeIfPresent(of: .alpha)
+                alpha:                                     container.attributeIfPresent(of: .alpha),
+                horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+                verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+                horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+                verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
             )
         }
     }
@@ -335,7 +358,11 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
             backgroundColor:                           colorsContainer?.withAttributeElement(.key, CodingKeys.backgroundColor.stringValue),
             tintColor:                                 colorsContainer?.withAttributeElement(.key, CodingKeys.tintColor.stringValue),
             isHidden:                                  container.attributeIfPresent(of: .isHidden),
-            alpha:                                     container.attributeIfPresent(of: .alpha)
+            alpha:                                     container.attributeIfPresent(of: .alpha),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }
@@ -374,6 +401,10 @@ public struct CollectionReusableView: IBDecodable, ViewProtocol, IBIdentifiable,
     public let tintColor: Color?
     public let isHidden: Bool?
     public let alpha: Float?
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
     
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -425,7 +456,11 @@ public struct CollectionReusableView: IBDecodable, ViewProtocol, IBIdentifiable,
             backgroundColor:                           colorsContainer?.withAttributeElement(.key, CodingKeys.backgroundColor.stringValue),
             tintColor:                                 colorsContainer?.withAttributeElement(.key, CodingKeys.tintColor.stringValue),
             isHidden:                                  container.attributeIfPresent(of: .isHidden),
-            alpha:                                     container.attributeIfPresent(of: .alpha)
+            alpha:                                     container.attributeIfPresent(of: .alpha),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

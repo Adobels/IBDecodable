@@ -21,7 +21,6 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
     public let customModuleProvider: String?
     public let userLabel: String?
     public let colorLabel: String?
-    public let horizontalHuggingPriority: Int?
     public let isMisplaced: Bool?
     public let isAmbiguous: Bool?
     public let verifyAmbiguity: VerifyAmbiguity?
@@ -33,7 +32,6 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
     public let subviews: [AnyView]?
     public let translatesAutoresizingMaskIntoConstraints: Bool?
     public let userInteractionEnabled: Bool?
-    public let verticalHuggingPriority: Int?
     public let userDefinedRuntimeAttributes: [UserDefinedRuntimeAttribute]?
     public let connections: [AnyConnection]?
     public let variations: [Variation]?
@@ -47,6 +45,11 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
     public let isSelected: Bool?
     public let contentHorizontalAlignment: String?
     public let contentVerticalAlignment: String?
+    
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -86,7 +89,6 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
             customModuleProvider:                      container.attributeIfPresent(of: .customModuleProvider),
             userLabel:                                 container.attributeIfPresent(of: .userLabel),
             colorLabel:                                container.attributeIfPresent(of: .colorLabel),
-            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
             isMisplaced:                               container.attributeIfPresent(of: .isMisplaced),
             isAmbiguous:                               container.attributeIfPresent(of: .isAmbiguous),
             verifyAmbiguity:                           container.attributeIfPresent(of: .verifyAmbiguity),
@@ -98,7 +100,6 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
             subviews:                                  container.childrenIfPresent(of: .subviews),
             translatesAutoresizingMaskIntoConstraints: container.attributeIfPresent(of: .translatesAutoresizingMaskIntoConstraints),
             userInteractionEnabled:                    container.attributeIfPresent(of: .userInteractionEnabled),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
             userDefinedRuntimeAttributes:              container.childrenIfPresent(of: .userDefinedRuntimeAttributes),
             connections:                               container.childrenIfPresent(of: .connections),
             variations:                                variationContainer.elementsIfPresent(of: .variation),
@@ -110,7 +111,11 @@ public struct Switch: IBDecodable, ControlProtocol, IBIdentifiable {
             isHighlighted:                             container.attributeIfPresent(of: .isHighlighted),
             isSelected:                                container.attributeIfPresent(of: .isSelected),
             contentHorizontalAlignment:                container.attributeIfPresent(of: .contentHorizontalAlignment),
-            contentVerticalAlignment:                  container.attributeIfPresent(of: .contentVerticalAlignment)
+            contentVerticalAlignment:                  container.attributeIfPresent(of: .contentVerticalAlignment),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

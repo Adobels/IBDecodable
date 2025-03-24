@@ -42,6 +42,10 @@ public struct StackView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let alignment: String?
     public let spacing: Int?
     public let baselineRelativeArrangement: Bool?
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     public var isVertical: Bool {
         return axis == "vertical"
@@ -104,7 +108,11 @@ public struct StackView: IBDecodable, ViewProtocol, IBIdentifiable {
             distribution:                              container.attributeIfPresent(of: .distribution),
             alignment:                                 container.attributeIfPresent(of: .alignment),
             spacing:                                   container.attributeIfPresent(of: .spacing),
-            baselineRelativeArrangement:               container.attributeIfPresent(of: .baselineRelativeArrangement)
+            baselineRelativeArrangement:               container.attributeIfPresent(of: .baselineRelativeArrangement),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

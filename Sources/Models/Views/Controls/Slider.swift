@@ -54,6 +54,10 @@ public struct Slider: IBDecodable, ControlProtocol, IBIdentifiable {
     public let minimumValueImage: String?
     public let maximumValueImage: String?
     public let continuous: Bool
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -121,7 +125,11 @@ public struct Slider: IBDecodable, ControlProtocol, IBIdentifiable {
             maxValue:                                  container.attributeIfPresent(of: .maxValue),
             minimumValueImage:                         container.attributeIfPresent(of: .minimumValueImage),
             maximumValueImage:                         container.attributeIfPresent(of: .maximumValueImage),
-            continuous:                                container.attributeIfPresent(of: .continuous) ?? true
+            continuous:                                container.attributeIfPresent(of: .continuous) ?? true,
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

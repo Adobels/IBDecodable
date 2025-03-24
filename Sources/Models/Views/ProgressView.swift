@@ -42,6 +42,11 @@ public struct ProgressView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let progress: Float?
     public let progressImage: String?
     public let trackImage: String?
+    
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    public let horizontalHuggingPriority: Int?
+    public let verticalHuggingPriority: Int?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -97,7 +102,11 @@ public struct ProgressView: IBDecodable, ViewProtocol, IBIdentifiable {
             trackTintColor:                            colorsContainer?.withAttributeElement(.key, CodingKeys.trackTintColor.stringValue),
             progress:                                  container.attributeIfPresent(of: .progress),
             progressImage:                             container.attributeIfPresent(of: .progressImage),
-            trackImage:                                container.attributeIfPresent(of: .trackImage)
+            trackImage:                                container.attributeIfPresent(of: .trackImage),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
+            horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
         )
     }
 }

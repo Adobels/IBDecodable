@@ -50,6 +50,9 @@ public struct Label: IBDecodable, ViewProtocol, IBIdentifiable {
     public let alpha: Float?
     public let numberOfLines: Int?
     public let adjustsFontForContentSizeCategory: Bool?
+    public let horizontalCompressionResistancePriority: Int?
+    public let verticalCompressionResistancePriority: Int?
+    
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -130,7 +133,10 @@ public struct Label: IBDecodable, ViewProtocol, IBIdentifiable {
             isHidden:                                  container.attributeIfPresent(of: .isHidden),
             alpha:                                     container.attributeIfPresent(of: .alpha),
             numberOfLines:                             container.attributeIfPresent(of: .numberOfLines),
-            adjustsFontForContentSizeCategory:         container.attributeIfPresent(of: .adjustsFontForContentSizeCategory)
+            adjustsFontForContentSizeCategory:         container.attributeIfPresent(of: .adjustsFontForContentSizeCategory),
+            horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
+            verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority)
+            
         )
     }
 
