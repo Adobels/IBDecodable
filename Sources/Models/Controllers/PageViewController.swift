@@ -28,7 +28,11 @@ public struct PageViewController: IBDecodable, ViewControllerProtocol {
     public var varspineLocation: String? // min, max, mid, none
     public var doubleSided: Bool
     public let size: [Size]?
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 
@@ -53,7 +57,11 @@ public struct PageViewController: IBDecodable, ViewControllerProtocol {
             varspineLocation:             container.attributeIfPresent(of: .varspineLocation),
             doubleSided:                  container.attributeIfPresent(of: .doubleSided) ?? false,
             size:                         container.elementsIfPresent(of: .size),
-            hidesBottomBarWhenPushed:     container.attributeIfPresent(of: .hidesBottomBarWhenPushed)
+            automaticallyAdjustsScrollViewInsets:   container.attributeIfPresent(of: .automaticallyAdjustsScrollViewInsets),
+            hidesBottomBarWhenPushed:               container.attributeIfPresent(of: .hidesBottomBarWhenPushed),
+            autoresizesArchivedViewToFullSize:      container.attributeIfPresent(of: .autoresizesArchivedViewToFullSize),
+            wantsFullScreenLayout:                  container.attributeIfPresent(of: .wantsFullScreenLayout),
+            extendedLayoutIncludesOpaqueBars:       container.attributeIfPresent(of: .extendedLayoutIncludesOpaqueBars)
         )
     }
 }

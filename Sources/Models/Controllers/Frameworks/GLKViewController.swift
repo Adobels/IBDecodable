@@ -27,7 +27,11 @@ public struct GLKViewController: IBDecodable, ViewControllerProtocol {
     public var rootView: ViewProtocol? { return glkView }
     public let size: [Size]?
     public var framework: String { return "GLKit" }
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 

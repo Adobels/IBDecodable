@@ -27,7 +27,11 @@ public struct CollectionViewController: IBDecodable, ViewControllerProtocol {
     public var rootView: ViewProtocol? { return collectionView }
     public let clearsSelectionOnViewWillAppear: Bool
     public let size: [Size]?
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 
@@ -51,7 +55,11 @@ public struct CollectionViewController: IBDecodable, ViewControllerProtocol {
             collectionView:                  container.elementIfPresent(of: .collectionView),
             clearsSelectionOnViewWillAppear: container.attributeIfPresent(of: .clearsSelectionOnViewWillAppear) ?? true,
             size:                            container.elementsIfPresent(of: .size),
-            hidesBottomBarWhenPushed:     container.attributeIfPresent(of: .hidesBottomBarWhenPushed)
+            automaticallyAdjustsScrollViewInsets:   container.attributeIfPresent(of: .automaticallyAdjustsScrollViewInsets),
+            hidesBottomBarWhenPushed:               container.attributeIfPresent(of: .hidesBottomBarWhenPushed),
+            autoresizesArchivedViewToFullSize:      container.attributeIfPresent(of: .autoresizesArchivedViewToFullSize),
+            wantsFullScreenLayout:                  container.attributeIfPresent(of: .wantsFullScreenLayout),
+            extendedLayoutIncludesOpaqueBars:       container.attributeIfPresent(of: .extendedLayoutIncludesOpaqueBars)
         )
     }
 }

@@ -176,6 +176,8 @@ class Tests: XCTestCase {
 
             let viewControllers = file.document.scenes?.map { $0.viewController?.viewController } ?? []
             let rootConnections = viewControllers.compactMap { $0?.connections }.flatMap { $0 }.compactMap { $0.connection }
+            let gestures = file.document.scenes?.compactMap { $0.gestureRecognizers }.flatMap { $0 } ?? []
+            XCTAssertEqual(gestures.count, 3)
             XCTAssertFalse(rootConnections.isEmpty)
 
             let connections: [AnyConnection] = file.document.children(of: AnyConnection.self, recursive: false)
@@ -214,6 +216,7 @@ class Tests: XCTestCase {
             }.flatMap { $0 }
             XCTAssertEqual(connectionsChildForId.count, 2)
             XCTAssertEqual(Set(connectionsChildForId.map { $0.connection.id}).count, 2)
+            
 
         } catch {
             XCTFail("\(error)")
@@ -244,6 +247,22 @@ class Tests: XCTestCase {
         } catch {
             XCTFail("\(error)")
         }
+    }
+    
+    func testStoryboardGestureRecognizers() throws {
+        let url = self.url(forResource: "StoryboardGestureRecognizers", withExtension: "storyboard")
+        let file = try StoryboardFile(url: url)
+        let gestureRecognizers = (file.document.scenes?.compactMap { $0.gestureRecognizers } ?? [])[0]
+        if let tg = gestureRecognizers.first?.gestureRecognizer as? TapGestureRecognizer {
+            XCTAssertEqual(tg.cancelsTouchesInView, .some(false))
+            XCTAssertEqual(tg.delaysTouchesBegan, .some(true))
+            XCTAssertEqual(tg.delaysTouchesEnded, .some(false))
+            XCTAssertEqual(tg.requiresExclusiveTouchType, .some(false))
+            XCTAssertEqual(tg.numberOfTapsRequired, .some(2))
+            XCTAssertEqual(tg.numberOfTouchesRequired, .some(2))
+        }
+        XCTAssertEqual(gestureRecognizers.count, 2)
+        XCTAssertEqual(gestureRecognizers[0].gestureRecognizer.connections?.count, 1)
     }
 
     func testStoryboardWithConstraintErrors() {

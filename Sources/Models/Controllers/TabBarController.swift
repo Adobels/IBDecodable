@@ -26,7 +26,11 @@ public struct TabBarController: IBDecodable, ViewControllerProtocol {
     public let tabBar: TabBar?
     public var rootView: ViewProtocol? { return tabBar }
     public let size: [Size]?
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 
@@ -49,7 +53,11 @@ public struct TabBarController: IBDecodable, ViewControllerProtocol {
             tabBarItem:                   container.elementIfPresent(of: .tabBarItem),
             tabBar:                       container.elementIfPresent(of: .tabBar),
             size:                         container.elementsIfPresent(of: .size),
-            hidesBottomBarWhenPushed:     container.attributeIfPresent(of: .hidesBottomBarWhenPushed)
+            automaticallyAdjustsScrollViewInsets:   container.attributeIfPresent(of: .automaticallyAdjustsScrollViewInsets),
+            hidesBottomBarWhenPushed:               container.attributeIfPresent(of: .hidesBottomBarWhenPushed),
+            autoresizesArchivedViewToFullSize:      container.attributeIfPresent(of: .autoresizesArchivedViewToFullSize),
+            wantsFullScreenLayout:                  container.attributeIfPresent(of: .wantsFullScreenLayout),
+            extendedLayoutIncludesOpaqueBars:       container.attributeIfPresent(of: .extendedLayoutIncludesOpaqueBars)
         )
     }
 }

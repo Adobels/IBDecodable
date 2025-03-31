@@ -30,7 +30,11 @@ public struct ViewController: IBDecodable, ViewControllerProtocol {
     public let providesPresentationContextTransitionStyle: Bool?
     public let modalTransitionStyle: ModalTransitionStyle
     public let modalPresentationStyle: ModalPresentationStyle
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 
@@ -56,8 +60,12 @@ public struct ViewController: IBDecodable, ViewControllerProtocol {
             definesPresentationContext:                 container.attributeIfPresent(of: .definesPresentationContext),
             providesPresentationContextTransitionStyle: container.attributeIfPresent(of: .providesPresentationContextTransitionStyle),
             modalTransitionStyle:                       container.attributeIfPresent(of: .modalTransitionStyle) ?? .coverVertical,
-            modalPresentationStyle:                       container.attributeIfPresent(of: .modalPresentationStyle) ?? .automatic,
-            hidesBottomBarWhenPushed:     container.attributeIfPresent(of: .hidesBottomBarWhenPushed)
+            modalPresentationStyle:                     container.attributeIfPresent(of: .modalPresentationStyle) ?? .automatic,
+            automaticallyAdjustsScrollViewInsets:       container.attributeIfPresent(of: .automaticallyAdjustsScrollViewInsets),
+            hidesBottomBarWhenPushed:                   container.attributeIfPresent(of: .hidesBottomBarWhenPushed),
+            autoresizesArchivedViewToFullSize:          container.attributeIfPresent(of: .autoresizesArchivedViewToFullSize),
+            wantsFullScreenLayout:                      container.attributeIfPresent(of: .wantsFullScreenLayout),
+            extendedLayoutIncludesOpaqueBars:           container.attributeIfPresent(of: .extendedLayoutIncludesOpaqueBars)
         )
     }
 }

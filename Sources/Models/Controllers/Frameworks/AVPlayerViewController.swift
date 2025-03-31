@@ -28,7 +28,11 @@ public struct AVPlayerViewController: IBDecodable, ViewControllerProtocol {
     public let videoGravity: String?
     public let size: [Size]?
     public var framework: String { return "AVKit" }
-    public let hidesBottomBarWhenPushed: Bool?
+    public var automaticallyAdjustsScrollViewInsets: Bool?
+    public var hidesBottomBarWhenPushed: Bool?
+    public var autoresizesArchivedViewToFullSize: Bool?
+    public var wantsFullScreenLayout: Bool?
+    public var extendedLayoutIncludesOpaqueBars: Bool?
 
     enum LayoutGuidesCodingKeys: CodingKey { case viewControllerLayoutGuide }
 

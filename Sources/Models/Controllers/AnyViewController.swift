@@ -23,7 +23,11 @@ public protocol ViewControllerProtocol: IBIdentifiable, IBCustomClassable, IBUse
     var rootView: ViewProtocol? { get }
     var size: [Size]? { get }
     var framework: String { get }
+    var automaticallyAdjustsScrollViewInsets: Bool? { get }
     var hidesBottomBarWhenPushed: Bool? { get }
+    var autoresizesArchivedViewToFullSize: Bool? { get }
+    var wantsFullScreenLayout: Bool? { get }
+    var extendedLayoutIncludesOpaqueBars: Bool? { get }
 }
 
 extension ViewControllerProtocol {
