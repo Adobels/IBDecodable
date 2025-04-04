@@ -69,6 +69,7 @@ public struct TableView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
+    public let accessibility: Accessibility?
 
     public enum DataMode: XMLAttributeDecodable, KeyDecodable, Equatable {
         case `static`, prototypes
@@ -175,7 +176,8 @@ public struct TableView: IBDecodable, ViewProtocol, IBIdentifiable {
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }
@@ -250,7 +252,8 @@ public struct TableViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBReusab
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
-    
+    public let accessibility: Accessibility?
+
     public var children: [IBElement] {
         // do not let default implementation which lead to duplicate element contentView
         var children: [IBElement] = [contentView] + (rect.map { [$0] } ?? [])
@@ -302,7 +305,8 @@ public struct TableViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBReusab
         public let verticalCompressionResistancePriority: Int?
         public let horizontalHuggingPriority: Int?
         public let verticalHuggingPriority: Int?
-        
+        public let accessibility: Accessibility?
+
         static func decode(_ xml: XMLIndexerType) throws -> TableViewCell.TableViewContentView {
             let container = xml.container(keys: MappedCodingKey.self).map { (key: CodingKeys) in
                 let stringValue: String = {
@@ -350,7 +354,8 @@ public struct TableViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBReusab
                 horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
                 verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
                 horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-                verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+                verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+                accessibility:                             container.elementIfPresent(of: .accessibility)
             )
         }
     }
@@ -411,7 +416,8 @@ public struct TableViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBReusab
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }

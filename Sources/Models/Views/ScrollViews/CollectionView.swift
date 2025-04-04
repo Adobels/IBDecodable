@@ -65,6 +65,7 @@ public struct CollectionView: IBDecodable, ViewProtocol, IBIdentifiable {
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
+    public let accessibility: Accessibility?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -140,7 +141,8 @@ public struct CollectionView: IBDecodable, ViewProtocol, IBIdentifiable {
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }
@@ -186,7 +188,8 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
-    
+    public let accessibility: Accessibility?
+
     public var children: [IBElement] {
         // do not let default implementation which lead to duplicate element contentView
         var children: [IBElement] = [contentView] + (rect.map { [$0] } ?? [])
@@ -243,7 +246,8 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
         public let verticalCompressionResistancePriority: Int?
         public let horizontalHuggingPriority: Int?
         public let verticalHuggingPriority: Int?
-        
+        public let accessibility: Accessibility?
+
         enum ConstraintsCodingKeys: CodingKey { case constraint }
         enum VariationCodingKey: CodingKey { case variation }
         enum ExternalCodingKeys: CodingKey { case color }
@@ -297,7 +301,8 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
                 horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
                 verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
                 horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-                verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+                verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+                accessibility:                             container.elementIfPresent(of: .accessibility)
             )
         }
     }
@@ -362,7 +367,8 @@ public struct CollectionViewCell: IBDecodable, ViewProtocol, IBIdentifiable, IBR
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }
@@ -405,7 +411,8 @@ public struct CollectionReusableView: IBDecodable, ViewProtocol, IBIdentifiable,
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
-    
+    public let accessibility: Accessibility?
+
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
     enum ExternalCodingKeys: CodingKey { case color }
@@ -460,7 +467,8 @@ public struct CollectionReusableView: IBDecodable, ViewProtocol, IBIdentifiable,
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }

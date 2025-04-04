@@ -12,11 +12,11 @@ import SWXMLHash
 public struct Accessibility: IBDecodable, IBKeyable {
 
     public let key: String?
+    public let isElement: IBBool?
     public let label: String?
     public let hint: String?
     public let identifier: String?
     public let traits: AccessibilityTraits?
-    public let isElement: IBBool?
 
     enum ExternalCodingKeys: CodingKey { case accessibilityTraits, bool }
     enum AttributedStringCodingKeys: CodingKey { case key }
@@ -29,11 +29,11 @@ public struct Accessibility: IBDecodable, IBKeyable {
             .nestedContainerIfPresent(of: .bool, keys: AttributedStringCodingKeys.self)
         return Accessibility(
             key: container.attributeIfPresent(of: .key),
+            isElement: boolContainer?.withAttributeElement(.key, CodingKeys.isElement.stringValue),
             label: container.attributeIfPresent(of: .label),
             hint: container.attributeIfPresent(of: .hint),
             identifier: container.attributeIfPresent(of: .identifier),
-            traits: accessibilityTraitsContainer?.withAttributeElement(.key, CodingKeys.traits.stringValue),
-            isElement: boolContainer?.withAttributeElement(.key, CodingKeys.isElement.stringValue)
+            traits: accessibilityTraitsContainer?.withAttributeElement(.key, CodingKeys.traits.stringValue)
         )
     }
 

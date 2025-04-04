@@ -41,6 +41,7 @@ public struct Toolbar: IBDecodable, ViewProtocol, IBIdentifiable {
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
+    public let accessibility: Accessibility?
 
     public struct BarButtonItem: IBDecodable {
         public let id: String
@@ -114,7 +115,8 @@ public struct Toolbar: IBDecodable, ViewProtocol, IBIdentifiable {
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }

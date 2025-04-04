@@ -41,6 +41,7 @@ public protocol ViewProtocol: IBKeyable, IBCustomClassable, IBUserLabelable, IBC
     var verticalCompressionResistancePriority: Int? { get }
     var horizontalHuggingPriority: Int? { get }
     var verticalHuggingPriority: Int? { get }
+    var accessibility: Accessibility? { get }
 }
 
 // MARK: - AnyView

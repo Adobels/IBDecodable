@@ -56,6 +56,7 @@ public struct DatePicker: IBDecodable, ControlProtocol, IBIdentifiable {
     public let verticalCompressionResistancePriority: Int?
     public let horizontalHuggingPriority: Int?
     public let verticalHuggingPriority: Int?
+    public let accessibility: Accessibility?
 
     enum ConstraintsCodingKeys: CodingKey { case constraint }
     enum VariationCodingKey: CodingKey { case variation }
@@ -129,7 +130,8 @@ public struct DatePicker: IBDecodable, ControlProtocol, IBIdentifiable {
             horizontalCompressionResistancePriority:   container.attributeIfPresent(of: .horizontalCompressionResistancePriority),
             verticalCompressionResistancePriority:     container.attributeIfPresent(of: .verticalCompressionResistancePriority),
             horizontalHuggingPriority:                 container.attributeIfPresent(of: .horizontalHuggingPriority),
-            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority)
+            verticalHuggingPriority:                   container.attributeIfPresent(of: .verticalHuggingPriority),
+            accessibility:                             container.elementIfPresent(of: .accessibility)
         )
     }
 }
